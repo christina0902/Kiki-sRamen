@@ -1,0 +1,6 @@
+@KiKisRamen_HostAddress = http://localhost:5180
+
+GET {{KiKisRamen_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
