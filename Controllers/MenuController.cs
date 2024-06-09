@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Kikis.Data;
 using Microsoft.AspNetCore.Authorization;
+using Kikis.Models;
 namespace Kikis.Controllers;
 
 [ApiController]
@@ -21,5 +22,19 @@ public class MenuController : ControllerBase
     public IActionResult GetMenu()
     {
         return Ok(_dbContext.MenuItems.OrderBy(mu => mu.Name));
+    }
+
+    [HttpGet("{id}")]
+    
+    public IActionResult GetMenuById(int id)
+    {
+        MenuItem foundMenuItem = _dbContext.MenuItems.SingleOrDefault(mi => mi.Id == id);
+
+        if(foundMenuItem == null)
+        {
+            return NotFound();
+        }
+
+        return Ok(foundMenuItem);
     }
 }

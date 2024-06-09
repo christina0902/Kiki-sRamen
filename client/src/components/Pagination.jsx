@@ -16,7 +16,7 @@ export const CustomPagination = ({
           onClick={() => {
             handlePagination(pageNumber);
           }}
-          className="pagination-button"
+          className="pagination-button primary-btn"
           key={pageNumber}
         >
           {pageNumber}
