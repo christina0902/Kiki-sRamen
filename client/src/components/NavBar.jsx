@@ -19,7 +19,7 @@ export default function NavBar({ loggedInUser, setLoggedInUser }) {
 
   return (
     <div>
-      <Navbar className="navBar" container="fluid" dark="true" expand="xl">
+      <Navbar className="navBar" container="fluid" dark={true} expand="xl">
         <Nav navbar>
           <NavbarBrand className="mr-auto" tag={RRNavLink} to="/">
             Kiki's Ramen
@@ -32,23 +32,28 @@ export default function NavBar({ loggedInUser, setLoggedInUser }) {
         </Nav>
         {loggedInUser ? (
           <>
-            <NavbarToggler onClick={toggleNavbar} />
-            <Collapse isOpen={open} navbar>
-              <Nav navbar></Nav>
-            </Collapse>
-            <Button
-              color="primary"
-              onClick={(e) => {
-                e.preventDefault();
-                setOpen(false);
-                logout().then(() => {
-                  setLoggedInUser(null);
-                  setOpen(false);
-                });
-              }}
-            >
-              Logout
-            </Button>
+            <Nav navbar>
+              <NavItem>
+                <NavLink tag={RRNavLink} to="/cart">
+                  View Cart
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <Button
+                  color="primary"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setOpen(false);
+                    logout().then(() => {
+                      setLoggedInUser(null);
+                      setOpen(false);
+                    });
+                  }}
+                >
+                  Logout
+                </Button>
+              </NavItem>
+            </Nav>
           </>
         ) : (
           <Nav navbar>

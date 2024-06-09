@@ -4,6 +4,7 @@ import Login from "./auth/Login";
 import Register from "./auth/Register";
 import { HomePage } from "./HomePage";
 import { MenuList } from "./menu/MenuList";
+import { MenuItemDetails } from "./menu/MenuItemDetails";
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
   return (
@@ -22,7 +23,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
       <Route path="/menu">
         <Route index element={<MenuList />} />
         <Route path=":id">
-          <Route index element={<>menu details</>} />
+          <Route index element={<MenuItemDetails />} />
         </Route>
       </Route>
       <Route path="/cart">

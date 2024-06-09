@@ -55,7 +55,7 @@ namespace KiKisRamen.Migrations
                         {
                             Id = 1,
                             Description = "Roasted pork belly, fish cake, ramen egg, black fungus, bamboo, green onion, seaweed, black garlic oil, in creamy pork bone broth",
-                            ImageLocation = "Uploads/Ramen.png",
+                            ImageLocation = "/Uploads/Ramen.png",
                             Name = "Tonkotsu Ramen",
                             Price = 15.5m
                         },
@@ -63,7 +63,7 @@ namespace KiKisRamen.Migrations
                         {
                             Id = 2,
                             Description = "Sous vide (slow-cooked) chicken chashu, ramen egg, corn, sesame seeds, green onion,  seaweed, in creamy chicken soup base",
-                            ImageLocation = "Uploads/Ramen copy.png",
+                            ImageLocation = "/Uploads/Ramen copy.png",
                             Name = "Tori Ramen",
                             Price = 15m
                         },
@@ -71,7 +71,7 @@ namespace KiKisRamen.Migrations
                         {
                             Id = 3,
                             Description = "Roasted pork belly, fish cake, ramen egg, bamboo shoots, corn, green onion, seaweed, black garlic oil, in soy sauce soup base",
-                            ImageLocation = "Uploads/ramen (5).png",
+                            ImageLocation = "/Uploads/ramen (5).png",
                             Name = "Shoyu Ramen",
                             Price = 15m
                         },
@@ -79,7 +79,7 @@ namespace KiKisRamen.Migrations
                         {
                             Id = 4,
                             Description = "Japanese style deep fried shrimp",
-                            ImageLocation = "Uploads/Tempura.png",
+                            ImageLocation = "/Uploads/Tempura.png",
                             Name = "Tempura Shrimp",
                             Price = 8m
                         },
@@ -87,7 +87,7 @@ namespace KiKisRamen.Migrations
                         {
                             Id = 5,
                             Description = "Minced octopus batter fried, top with bonito, served with Japanese mayo & Takoyaki sauce",
-                            ImageLocation = "Uploads/Takoyaki.png",
+                            ImageLocation = "/Uploads/Takoyaki.png",
                             Name = "Takoyaki",
                             Price = 8m
                         },
@@ -95,7 +95,7 @@ namespace KiKisRamen.Migrations
                         {
                             Id = 6,
                             Description = "Pan fried chicken pot stickers",
-                            ImageLocation = "Uploads/Gyoza.png",
+                            ImageLocation = "/Uploads/Gyoza.png",
                             Name = "Gyoza",
                             Price = 7m
                         },
@@ -103,7 +103,7 @@ namespace KiKisRamen.Migrations
                         {
                             Id = 7,
                             Description = "Shrimp, muscle, squid, crabmeat, fish cake, green onion, corn, seaweed, black garlic oil, in pork bone broth",
-                            ImageLocation = "Uploads/Template5.png",
+                            ImageLocation = "/Uploads/Template5.png",
                             Name = "Seafood Ramen",
                             Price = 16m
                         },
@@ -111,7 +111,7 @@ namespace KiKisRamen.Migrations
                         {
                             Id = 8,
                             Description = "Roasted pork belly, ramen egg, corn, bean sprout, green onion, seaweed, in creamy miso soup base",
-                            ImageLocation = "Uploads/Template7.png",
+                            ImageLocation = "/Uploads/Template7.png",
                             Name = "Spicy Miso Ramen",
                             Price = 15m
                         },
@@ -119,7 +119,7 @@ namespace KiKisRamen.Migrations
                         {
                             Id = 9,
                             Description = "Bamboo shoots, black fungus, bean sprouts, corn, green onion, seaweed, black garlic oil, in creamy vegetable soup base",
-                            ImageLocation = "Uploads/Template1.png",
+                            ImageLocation = "/Uploads/Template1.png",
                             Name = "Vegetable Ramen",
                             Price = 13m
                         },
@@ -127,7 +127,7 @@ namespace KiKisRamen.Migrations
                         {
                             Id = 10,
                             Description = "Fish cake, ramen egg, corn, seaweed, top w. melting American cheese, black garlic oil, in creamy pork bone broth",
-                            ImageLocation = "Uploads/Template8.png",
+                            ImageLocation = "/Uploads/Template8.png",
                             Name = "Cheese Ramen",
                             Price = 16m
                         },
@@ -135,7 +135,7 @@ namespace KiKisRamen.Migrations
                         {
                             Id = 11,
                             Description = "Ramen noodle with spicy miso topped with char siu, egg, green onion, and sesame seeds.",
-                            ImageLocation = "Uploads/Template4.png",
+                            ImageLocation = "/Uploads/Template4.png",
                             Name = "Spicy Miso Ramen",
                             Price = 16.95m
                         });
@@ -202,7 +202,7 @@ namespace KiKisRamen.Migrations
                         new
                         {
                             Id = 1,
-                            OrderDate = new DateTime(2024, 6, 8, 20, 47, 8, 437, DateTimeKind.Local).AddTicks(980),
+                            OrderDate = new DateTime(2024, 6, 9, 4, 15, 44, 989, DateTimeKind.Local).AddTicks(7740),
                             StatusId = 2,
                             UserProfileId = 1
                         });
@@ -417,13 +417,13 @@ namespace KiKisRamen.Migrations
                         {
                             Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "073fd64e-9567-44f8-b3ab-69b56a3c0b6f",
+                            ConcurrencyStamp = "ff114346-0eb9-48a0-b724-a0a3eeebf2ff",
                             Email = "christinam1215@yahoo.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAELn7cbTGGAiVWo7+uI1oP1bfPMZeOb0Ir8cZZAo4Hbtp3dCto7oP8R0lpbTO34NP+Q==",
+                            PasswordHash = "AQAAAAIAAYagAAAAELWeZC3TqG8kTAe61aLl3xslS9dwN01GHGOPgsQ93RvXCcgfDhvw6qig4J96xrm75w==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "319024cb-441b-4e78-9456-5dcfdb8bfb10",
+                            SecurityStamp = "5aa9c26c-33db-43e6-bf51-3f7809687cd6",
                             TwoFactorEnabled = false,
                             UserName = "christinam1215"
                         });
