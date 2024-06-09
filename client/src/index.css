@@ -1,4 +1,4 @@
-:root {
+/* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -65,4 +65,22 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+} */
+
+body {
+  background-color: black;
+  color: white;
+  overflow: hidden;
+  margin: 0;
+  /* max-width: 80vw; */
+  min-height: 100vh;
+  font-family: "Raleway";
+  text-align: center;
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-top: 2rem;
+  text-align: center;
 }

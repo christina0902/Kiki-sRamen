@@ -6,10 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using System.Text;
 using Kikis.Models;
-using Kikis.Models.DTOs;
 using Kikis.Data;
 
-namespace KikisRules.Controllers;
+namespace Tabloid.Controllers;
 
 
 [ApiController]
@@ -102,25 +101,16 @@ public class AuthController : ControllerBase
         var roles = User.FindAll(ClaimTypes.Role).Select(r => r.Value).ToList();
         if (profile != null)
         {
-            var userDto = new UserProfileDTO
-            {
-                Id = profile.Id,
-                FirstName = profile.FirstName,
-                LastName = profile.LastName,
-                PhoneNumber = profile.PhoneNumber,
-                IdentityUserId = identityUserId,
-                UserName = User.FindFirstValue(ClaimTypes.Name),
-                Email = User.FindFirstValue(ClaimTypes.Email),
-                Roles = roles
-            };
-
-            return Ok(userDto);
+            profile.UserName = User.FindFirstValue(ClaimTypes.Name);
+            profile.Email = User.FindFirstValue(ClaimTypes.Email);
+            profile.Roles = roles;
+            return Ok(profile);
         }
         return NotFound();
     }
 
     [HttpPost("register")]
-    public async Task<IActionResult> Register(RegistrationDTO registration)
+    public async Task<IActionResult> Register(Registration registration)
     {
         var user = new IdentityUser
         {
@@ -159,6 +149,6 @@ public class AuthController : ControllerBase
 
             return Ok();
         }
-        return StatusCode(500);
+        return BadRequest(new { Errors = result.Errors.Select(ir => ir.Description) });
     }
 }

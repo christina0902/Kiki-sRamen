@@ -26,8 +26,9 @@ public class UserProfile
     [Phone]
     public string PhoneNumber { get; set; } 
 
-    public string? IdentityUserId { get; set; }
-
+    public string IdentityUserId { get; set; }
+    [NotMapped]
+    public List<string> Roles { get; set; }
     public IdentityUser IdentityUser { get; set; }
 
     public string FullName
