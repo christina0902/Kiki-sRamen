@@ -55,7 +55,7 @@ namespace KiKisRamen.Migrations
                         {
                             Id = 1,
                             Description = "Roasted pork belly, fish cake, ramen egg, black fungus, bamboo, green onion, seaweed, black garlic oil, in creamy pork bone broth",
-                            ImageLocation = "client/Uploads/Ramen.png",
+                            ImageLocation = "Uploads/Ramen.png",
                             Name = "Tonkotsu Ramen",
                             Price = 15.5m
                         },
@@ -63,7 +63,7 @@ namespace KiKisRamen.Migrations
                         {
                             Id = 2,
                             Description = "Sous vide (slow-cooked) chicken chashu, ramen egg, corn, sesame seeds, green onion,  seaweed, in creamy chicken soup base",
-                            ImageLocation = "client/Uploads/Ramen copy.png",
+                            ImageLocation = "Uploads/Ramen copy.png",
                             Name = "Tori Ramen",
                             Price = 15m
                         },
@@ -71,7 +71,7 @@ namespace KiKisRamen.Migrations
                         {
                             Id = 3,
                             Description = "Roasted pork belly, fish cake, ramen egg, bamboo shoots, corn, green onion, seaweed, black garlic oil, in soy sauce soup base",
-                            ImageLocation = "client/Uploads/ramen (5).png",
+                            ImageLocation = "Uploads/ramen (5).png",
                             Name = "Shoyu Ramen",
                             Price = 15m
                         },
@@ -79,7 +79,7 @@ namespace KiKisRamen.Migrations
                         {
                             Id = 4,
                             Description = "Japanese style deep fried shrimp",
-                            ImageLocation = "client/Uploads/Tempura.png",
+                            ImageLocation = "Uploads/Tempura.png",
                             Name = "Tempura Shrimp",
                             Price = 8m
                         },
@@ -87,7 +87,7 @@ namespace KiKisRamen.Migrations
                         {
                             Id = 5,
                             Description = "Minced octopus batter fried, top with bonito, served with Japanese mayo & Takoyaki sauce",
-                            ImageLocation = "client/Uploads/Takoyaki.png",
+                            ImageLocation = "Uploads/Takoyaki.png",
                             Name = "Takoyaki",
                             Price = 8m
                         },
@@ -95,7 +95,7 @@ namespace KiKisRamen.Migrations
                         {
                             Id = 6,
                             Description = "Pan fried chicken pot stickers",
-                            ImageLocation = "client/Uploads/Gyoza.png",
+                            ImageLocation = "Uploads/Gyoza.png",
                             Name = "Gyoza",
                             Price = 7m
                         },
@@ -103,7 +103,7 @@ namespace KiKisRamen.Migrations
                         {
                             Id = 7,
                             Description = "Shrimp, muscle, squid, crabmeat, fish cake, green onion, corn, seaweed, black garlic oil, in pork bone broth",
-                            ImageLocation = "client/Uploads/Template5.png",
+                            ImageLocation = "Uploads/Template5.png",
                             Name = "Seafood Ramen",
                             Price = 16m
                         },
@@ -111,7 +111,7 @@ namespace KiKisRamen.Migrations
                         {
                             Id = 8,
                             Description = "Roasted pork belly, ramen egg, corn, bean sprout, green onion, seaweed, in creamy miso soup base",
-                            ImageLocation = "client/Uploads/Template7.png",
+                            ImageLocation = "Uploads/Template7.png",
                             Name = "Spicy Miso Ramen",
                             Price = 15m
                         },
@@ -119,7 +119,7 @@ namespace KiKisRamen.Migrations
                         {
                             Id = 9,
                             Description = "Bamboo shoots, black fungus, bean sprouts, corn, green onion, seaweed, black garlic oil, in creamy vegetable soup base",
-                            ImageLocation = "client/Uploads/Template1.png",
+                            ImageLocation = "Uploads/Template1.png",
                             Name = "Vegetable Ramen",
                             Price = 13m
                         },
@@ -127,7 +127,7 @@ namespace KiKisRamen.Migrations
                         {
                             Id = 10,
                             Description = "Fish cake, ramen egg, corn, seaweed, top w. melting American cheese, black garlic oil, in creamy pork bone broth",
-                            ImageLocation = "client/Uploads/Template8.png",
+                            ImageLocation = "Uploads/Template8.png",
                             Name = "Cheese Ramen",
                             Price = 16m
                         },
@@ -135,7 +135,7 @@ namespace KiKisRamen.Migrations
                         {
                             Id = 11,
                             Description = "Ramen noodle with spicy miso topped with char siu, egg, green onion, and sesame seeds.",
-                            ImageLocation = "client/Uploads/Template4.png",
+                            ImageLocation = "Uploads/Template4.png",
                             Name = "Spicy Miso Ramen",
                             Price = 16.95m
                         });
@@ -202,7 +202,7 @@ namespace KiKisRamen.Migrations
                         new
                         {
                             Id = 1,
-                            OrderDate = new DateTime(2024, 6, 7, 13, 25, 7, 752, DateTimeKind.Local).AddTicks(2810),
+                            OrderDate = new DateTime(2024, 6, 8, 20, 47, 8, 437, DateTimeKind.Local).AddTicks(980),
                             StatusId = 2,
                             UserProfileId = 1
                         });
@@ -261,6 +261,7 @@ namespace KiKisRamen.Migrations
                         .HasColumnType("character varying(50)");
 
                     b.Property<string>("IdentityUserId")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("LastName")
@@ -416,13 +417,13 @@ namespace KiKisRamen.Migrations
                         {
                             Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c4ea875e-a4a8-4550-95a1-1aefcd6a16f0",
+                            ConcurrencyStamp = "073fd64e-9567-44f8-b3ab-69b56a3c0b6f",
                             Email = "christinam1215@yahoo.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEFil5qjiPSmvdrKjAV/9yi5/VlMUTVYiy17x2ScE/m3jPC90D1fZ5QZI2wH3imD8+A==",
+                            PasswordHash = "AQAAAAIAAYagAAAAELn7cbTGGAiVWo7+uI1oP1bfPMZeOb0Ir8cZZAo4Hbtp3dCto7oP8R0lpbTO34NP+Q==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f1c8f8a4-041f-4015-8a31-0ab3cc76c855",
+                            SecurityStamp = "319024cb-441b-4e78-9456-5dcfdb8bfb10",
                             TwoFactorEnabled = false,
                             UserName = "christinam1215"
                         });
@@ -558,7 +559,9 @@ namespace KiKisRamen.Migrations
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "IdentityUser")
                         .WithMany()
-                        .HasForeignKey("IdentityUserId");
+                        .HasForeignKey("IdentityUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("IdentityUser");
                 });
