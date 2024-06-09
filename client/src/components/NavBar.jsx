@@ -19,10 +19,17 @@ export default function NavBar({ loggedInUser, setLoggedInUser }) {
 
   return (
     <div>
-      <Navbar color="light" light fixed="true" expand="lg">
-        <NavbarBrand className="mr-auto" tag={RRNavLink} to="/">
-          Kiki's Ramen
-        </NavbarBrand>
+      <Navbar className="navBar" container="fluid" dark="true" expand="xl">
+        <Nav navbar>
+          <NavbarBrand className="mr-auto" tag={RRNavLink} to="/">
+            Kiki's Ramen
+          </NavbarBrand>
+          <NavItem>
+            <NavLink tag={RRNavLink} to="/menu">
+              Menu
+            </NavLink>
+          </NavItem>
+        </Nav>
         {loggedInUser ? (
           <>
             <NavbarToggler onClick={toggleNavbar} />
@@ -46,8 +53,13 @@ export default function NavBar({ loggedInUser, setLoggedInUser }) {
         ) : (
           <Nav navbar>
             <NavItem>
+              <NavLink tag={RRNavLink} to="/cart">
+                View Cart
+              </NavLink>
+            </NavItem>
+            <NavItem>
               <NavLink tag={RRNavLink} to="/login">
-                <Button color="primary">Login</Button>
+                Sign In
               </NavLink>
             </NavItem>
           </Nav>
