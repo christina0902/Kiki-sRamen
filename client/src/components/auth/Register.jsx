@@ -11,8 +11,8 @@ export default function Register({ setLoggedInUser }) {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [errors, setErrors] = useState([]);
 
+  const [registrationFail, setRegistrationFail] = useState(false);
   const [passwordMismatch, setPasswordMismatch] = useState();
 
   const navigate = useNavigate();
@@ -33,7 +33,7 @@ export default function Register({ setLoggedInUser }) {
       };
       register(newUser).then((user) => {
         if (user.errors) {
-          setErrors(user.errors);
+          setRegistrationFail(true);
         } else {
           setLoggedInUser(user);
           navigate("/");
@@ -47,6 +47,7 @@ export default function Register({ setLoggedInUser }) {
       <FormGroup className="name-input">
         <Input
           type="text"
+          invalid={registrationFail}
           className="form-input block-input"
           placeholder="First Name"
           value={firstName}
@@ -60,19 +61,20 @@ export default function Register({ setLoggedInUser }) {
           placeholder="Last Name"
           className="form-input block-input"
           required
+          invalid={registrationFail}
           value={lastName}
           onChange={(e) => {
             setLastName(e.target.value);
           }}
         />
       </FormGroup>
-
       <FormGroup>
         <Input
           placeholder="Email"
           type="email"
           value={email}
           required
+          invalid={registrationFail}
           className="form-input"
           onChange={(e) => {
             setEmail(e.target.value);
@@ -83,6 +85,7 @@ export default function Register({ setLoggedInUser }) {
         <Input
           type="text"
           required
+          invalid={registrationFail}
           placeholder="Username"
           value={userName}
           className="form-input"
@@ -96,6 +99,7 @@ export default function Register({ setLoggedInUser }) {
           placeholder="Phone Number"
           type="text"
           required
+          invalid={registrationFail}
           className="form-input"
           value={phoneNumber}
           onChange={(e) => {
@@ -106,7 +110,7 @@ export default function Register({ setLoggedInUser }) {
       <FormGroup>
         <Input
           placeholder="Password"
-          invalid={passwordMismatch}
+          invalid={passwordMismatch || registrationFail}
           type="password"
           required
           className="form-input"
@@ -119,7 +123,7 @@ export default function Register({ setLoggedInUser }) {
       </FormGroup>
       <FormGroup>
         <Input
-          invalid={passwordMismatch}
+          invalid={passwordMismatch || registrationFail}
           placeholder="Confirm Password"
           type="password"
           className="form-input"
@@ -130,13 +134,12 @@ export default function Register({ setLoggedInUser }) {
             setConfirmPassword(e.target.value);
           }}
         />
-        <FormFeedback>Passwords do not match!</FormFeedback>
+        {passwordMismatch ? (
+          <FormFeedback>Passwords do not match!</FormFeedback>
+        ) : (
+          <FormFeedback>Login failed</FormFeedback>
+        )}
       </FormGroup>
-      {errors.map((e, i) => (
-        <p key={i} style={{ color: "red" }}>
-          {e}
-        </p>
-      ))}
       <button
         color="primary"
         className="auth-btn"

@@ -51,7 +51,6 @@
 
 .block-input {
   width: 40%;
-  /* display: inline; */
 }
 .name-input {
   display: flex;
@@ -59,4 +58,8 @@
 
 .register-form {
   margin-top: 8%;
+}
+
+.errors {
+  color: red;
 }
