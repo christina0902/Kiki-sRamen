@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { login } from "../../managers/authManager";
 import { Button, FormFeedback, FormGroup, Input, Label } from "reactstrap";
+import "./auth.css";
 
 export default function Login({ setLoggedInUser }) {
   const navigate = useNavigate();
@@ -22,14 +23,14 @@ export default function Login({ setLoggedInUser }) {
   };
 
   return (
-    <div className="container" style={{ maxWidth: "500px" }}>
-      <h3>Login</h3>
+    <div className="container login-form" style={{ maxWidth: "500px" }}>
       <FormGroup>
-        <Label>Email</Label>
         <Input
           invalid={failedLogin}
           type="text"
           value={email}
+          placeholder="Email"
+          className="form-input"
           onChange={(e) => {
             setFailedLogin(false);
             setEmail(e.target.value);
@@ -37,11 +38,12 @@ export default function Login({ setLoggedInUser }) {
         />
       </FormGroup>
       <FormGroup>
-        <Label>Password</Label>
         <Input
           invalid={failedLogin}
           type="password"
           value={password}
+          placeholder="Password"
+          className="form-input"
           onChange={(e) => {
             setFailedLogin(false);
             setPassword(e.target.value);
@@ -50,11 +52,13 @@ export default function Login({ setLoggedInUser }) {
         <FormFeedback>Login failed.</FormFeedback>
       </FormGroup>
 
-      <Button color="primary" onClick={handleSubmit}>
-        Login
-      </Button>
+      <button className="auth-btn" onClick={handleSubmit}>
+        Sign In
+      </button>
       <p>
-        Not signed up? Register <Link to="/register">here</Link>
+        <Link className="register-link" to="/register">
+          create account
+        </Link>
       </p>
     </div>
   );

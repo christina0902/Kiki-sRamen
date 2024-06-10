@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { register } from "../../managers/authManager";
 import { Link, useNavigate } from "react-router-dom";
-import { Button, FormFeedback, FormGroup, Input, Label } from "reactstrap";
+import { FormFeedback, FormGroup, Input } from "reactstrap";
 
 export default function Register({ setLoggedInUser }) {
   const [firstName, setFirstName] = useState("");
@@ -43,52 +43,60 @@ export default function Register({ setLoggedInUser }) {
   };
 
   return (
-    <div className="container" style={{ maxWidth: "500px" }}>
-      <h3>Sign Up</h3>
-      <FormGroup>
-        <Label>First Name</Label>
+    <div className="container register-form" style={{ maxWidth: "550px" }}>
+      <FormGroup className="name-input">
         <Input
           type="text"
+          className="form-input block-input"
+          placeholder="First Name"
           value={firstName}
+          required
           onChange={(e) => {
             setFirstName(e.target.value);
           }}
         />
-      </FormGroup>
-      <FormGroup>
-        <Label>Last Name</Label>
         <Input
           type="text"
+          placeholder="Last Name"
+          className="form-input block-input"
+          required
           value={lastName}
           onChange={(e) => {
             setLastName(e.target.value);
           }}
         />
       </FormGroup>
+
       <FormGroup>
-        <Label>Email</Label>
         <Input
+          placeholder="Email"
           type="email"
           value={email}
+          required
+          className="form-input"
           onChange={(e) => {
             setEmail(e.target.value);
           }}
         />
       </FormGroup>
       <FormGroup>
-        <Label>User Name</Label>
         <Input
           type="text"
+          required
+          placeholder="Username"
           value={userName}
+          className="form-input"
           onChange={(e) => {
             setUserName(e.target.value);
           }}
         />
       </FormGroup>
       <FormGroup>
-        <Label>Phone Number</Label>
         <Input
+          placeholder="Phone Number"
           type="text"
+          required
+          className="form-input"
           value={phoneNumber}
           onChange={(e) => {
             setPhoneNumber(e.target.value);
@@ -96,10 +104,12 @@ export default function Register({ setLoggedInUser }) {
         />
       </FormGroup>
       <FormGroup>
-        <Label>Password</Label>
         <Input
+          placeholder="Password"
           invalid={passwordMismatch}
           type="password"
+          required
+          className="form-input"
           value={password}
           onChange={(e) => {
             setPasswordMismatch(false);
@@ -108,10 +118,12 @@ export default function Register({ setLoggedInUser }) {
         />
       </FormGroup>
       <FormGroup>
-        <Label>Confirm Password</Label>
         <Input
           invalid={passwordMismatch}
+          placeholder="Confirm Password"
           type="password"
+          className="form-input"
+          required
           value={confirmPassword}
           onChange={(e) => {
             setPasswordMismatch(false);
@@ -125,15 +137,18 @@ export default function Register({ setLoggedInUser }) {
           {e}
         </p>
       ))}
-      <Button
+      <button
         color="primary"
+        className="auth-btn"
         onClick={handleSubmit}
         disabled={passwordMismatch}
       >
         Register
-      </Button>
+      </button>
       <p>
-        Already signed up? Log in <Link to="/login">here</Link>
+        <Link className="register-link" to="/login">
+          Already have an account?
+        </Link>
       </p>
     </div>
   );

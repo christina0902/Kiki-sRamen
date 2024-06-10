@@ -109,13 +109,15 @@
 }
 
 .pagination-button {
-  background-color: black;
+  background-color: #1a1a1a;
   color: white;
   border: solid 1px white;
   width: 35px;
   font-size: 20px;
   height: 35px;
   margin: 10px;
+  margin-left: 30px;
+  margin-right: 30px;
 }
 
 .primary-btn:active {

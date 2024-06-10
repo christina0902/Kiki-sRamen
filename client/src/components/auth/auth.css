@@ -1,0 +1,62 @@
+.form-input {
+  background-color: #1a1a1a;
+  border: white solid 1px;
+  border-radius: 0%;
+  height: 50px;
+  width: 90%;
+  margin: auto;
+  color: white;
+  margin-bottom: 40px;
+}
+
+.form-input::placeholder {
+  color: white;
+  text-align: center;
+  font-size: 20px;
+}
+
+.form-input:focus::placeholder {
+  color: transparent;
+}
+.form-input:focus {
+  background-color: #1a1a1a;
+  color: white;
+  border: white solid 1px;
+  box-shadow: none;
+}
+
+.auth-btn {
+  background-color: #1a1a1a;
+  border: white solid 1px;
+  border-radius: 0%;
+  width: 35%;
+  height: 50px;
+  margin-bottom: 20px;
+  color: white;
+  font-size: 20px;
+}
+
+.auth-btn:active {
+  transform: scale(0.98);
+  box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+}
+
+.register-link {
+  color: white;
+}
+
+.login-form {
+  margin-top: 23%;
+}
+
+.block-input {
+  width: 40%;
+  /* display: inline; */
+}
+.name-input {
+  display: flex;
+}
+
+.register-form {
+  margin-top: 8%;
+}
