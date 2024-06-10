@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Kikis.Models;
 using Kikis.Data;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 
@@ -23,7 +22,7 @@ public class UserProfileController : ControllerBase
     // [Authorize]
     public IActionResult Get()
     {
-        return Ok(_dbContext.UserProfiles.ToList());
+        return Ok(_dbContext.UserProfiles.Include(up => up.Orders).ToList());
     }
 
     [HttpGet("withroles")]
@@ -45,8 +44,35 @@ public class UserProfileController : ControllerBase
             .Where(ur => ur.UserId == up.IdentityUserId)
             .Select(ur => _dbContext.Roles.SingleOrDefault(r => r.Id == ur.RoleId).Name)
             .ToList(),
-           
+
         }));
+    }
+
+    [HttpGet("{id}")]
+    public IActionResult GetById(int id)
+    {
+        UserProfile foundUser = _dbContext.UserProfiles
+        .Include(up => up.Orders)
+        .Select(up => new UserProfile
+        {
+            Id = up.Id,
+            FirstName = up.FirstName,
+            LastName = up.LastName,
+            Orders = up.Orders.Select(o => new Order
+            {
+                Id = o.Id,
+                UserProfileId = o.UserProfileId,
+                StatusId = o.StatusId,
+                OrderDate = o.OrderDate,
+            }).Where(o => o.OrderDate == null).ToList()
+        })
+        .SingleOrDefault(up => up.Id == id);
+        if(foundUser == null)
+        {
+            return NotFound();
+        }
+
+        return Ok(foundUser);
     }
 
   

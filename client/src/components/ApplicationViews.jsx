@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import { AuthorizedRoute } from "./auth/AuthorizedRoute";
 import Login from "./auth/Login";
 import Register from "./auth/Register";
-import { HomePage } from "./HomePage";
+import { HomePage } from "./homePage/HomePage";
 import { MenuList } from "./menu/MenuList";
 import { MenuItemDetails } from "./menu/MenuItemDetails";
 
@@ -23,7 +23,10 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
       <Route path="/menu">
         <Route index element={<MenuList />} />
         <Route path=":id">
-          <Route index element={<MenuItemDetails />} />
+          <Route
+            index
+            element={<MenuItemDetails loggedInUser={loggedInUser} />}
+          />
         </Route>
       </Route>
       <Route path="/cart">
