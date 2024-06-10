@@ -1,7 +1,6 @@
 
 using Microsoft.AspNetCore.Mvc;
 using Kikis.Data;
-using Microsoft.AspNetCore.Authorization;
 using Kikis.Models;
 namespace Kikis.Controllers;
 
