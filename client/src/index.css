@@ -68,7 +68,7 @@ button:focus-visible {
 } */
 
 body {
-  background-color: black;
+  background-color: #1a1a1a;
   color: white;
   overflow: hidden;
   margin: 0;
