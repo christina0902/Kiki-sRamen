@@ -1,4 +1,6 @@
-export const MenuItem = ({ m }) => {
+import { deleteMenuItemOrder } from "../../managers/menuItemOrderManager";
+
+export const MenuItem = ({ m, refresh }) => {
   const quantityDropDownOption = [];
   for (let i = 1; i <= 20; i++) {
     quantityDropDownOption.push(
@@ -7,6 +9,15 @@ export const MenuItem = ({ m }) => {
       </option>
     );
   }
+  const handleRemoveFromCart = () => {
+    const itemToRemove = {
+      orderId: m.orderId,
+      menuItemId: m.menuItemId,
+    };
+    deleteMenuItemOrder(itemToRemove).then(() => {
+      refresh();
+    });
+  };
 
   return (
     <>
@@ -31,7 +42,14 @@ export const MenuItem = ({ m }) => {
               {quantityDropDownOption}
             </select>
           </div>
-          <button className="cart-delete-btn">delete</button>
+          <button
+            className="cart-delete-btn"
+            onClick={() => {
+              handleRemoveFromCart();
+            }}
+          >
+            delete
+          </button>
         </div>
       </div>
     </>
