@@ -11,10 +11,11 @@ import {
   NavbarToggler,
 } from "reactstrap";
 import { logout } from "../managers/authManager";
+import { useNavigate } from "react-router-dom";
 
 export default function NavBar({ loggedInUser, setLoggedInUser }) {
   const [open, setOpen] = useState(false);
-
+  const navigate = useNavigate();
   const toggleNavbar = () => setOpen(!open);
 
   return (
@@ -45,6 +46,7 @@ export default function NavBar({ loggedInUser, setLoggedInUser }) {
                     e.preventDefault();
                     setOpen(false);
                     logout().then(() => {
+                      navigate("/");
                       setLoggedInUser(null);
                       setOpen(false);
                     });
