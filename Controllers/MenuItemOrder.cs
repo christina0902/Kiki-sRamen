@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Kikis.Data;
 using Kikis.Models;
+using Microsoft.AspNetCore.Authorization;
 namespace Kikis.Controllers;
 
 [ApiController]
@@ -17,6 +18,7 @@ public class MenuItemOrderController : ControllerBase
     }
 
     [HttpPost]
+    [Authorize]
 
     public IActionResult NewMenuItemOrder(MenuItemOrder menuItemOrderToCreate)
     {
@@ -39,6 +41,17 @@ public class MenuItemOrderController : ControllerBase
         _dbContext.MenuItemOrders.Add(menuItemOrderToAdd);
         _dbContext.SaveChanges();
         return Ok(menuItemOrderToAdd);
+    }
+
+    [HttpDelete()]
+    // [Authorize]
+
+    public IActionResult RemoveMenuItemOrder(MenuItemOrder menuItemOrder)    
+    {
+        MenuItemOrder menuItemToDelete = _dbContext.MenuItemOrders.SingleOrDefault(mi => mi == menuItemOrder);
+        _dbContext.MenuItemOrders.Remove(menuItemToDelete);
+        _dbContext.SaveChanges();
+        return NoContent();
     }
   
 }

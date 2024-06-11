@@ -9,3 +9,13 @@ export const newMenuItemOrder = (menuItemOrder) => {
     body: JSON.stringify(menuItemOrder),
   }).then((res) => res.json());
 };
+
+export const deleteMenuItemOrder = (menuItemOrder) => {
+  return fetch(_apiUrl, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(menuItemOrder),
+  });
+};

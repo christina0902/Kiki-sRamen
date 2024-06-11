@@ -9,17 +9,22 @@ export const Cart = ({ loggedInUser }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    getUserProfile(loggedInUser?.id).then((userProfile) => {
-      setOrder(userProfile.orders[0]);
-    });
+    if (loggedInUser) {
+      refreshOrder();
+    }
   }, [loggedInUser]);
 
+  const refreshOrder = () => {
+    getUserProfile(loggedInUser?.id).then((userProfile) => {
+      setOrder(userProfile.orders[0] || {});
+    });
+  };
   return (
     <>
-      {Object.keys(order).length != 0 ? (
+      {order?.menuItemOrders?.length != 0 ? (
         <div className="cart-container" style={{ maxWidth: "750px" }}>
           {order?.menuItemOrders?.map((m) => {
-            return <MenuItem key={m.id} m={m} />;
+            return <MenuItem key={m.id} m={m} refresh={refreshOrder} />;
           })}
 
           <div className="cart-subtotal">Subtotal : ${order.total}</div>
