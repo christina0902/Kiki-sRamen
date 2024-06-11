@@ -5,6 +5,7 @@ import Register from "./auth/Register";
 import { HomePage } from "./homePage/HomePage";
 import { MenuList } from "./menu/MenuList";
 import { MenuItemDetails } from "./menu/MenuItemDetails";
+import { Cart } from "./cart/Cart";
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
   return (
@@ -30,7 +31,10 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
         </Route>
       </Route>
       <Route path="/cart">
-        <Route index element={<>cart</>} />
+        <Route index element={<Cart loggedInUser={loggedInUser} />} />
+      </Route>
+      <Route path="/checkout">
+        <Route index element={<>checkout page</>} />
       </Route>
 
       <Route path="*" element={<p>Whoops, nothing here...</p>} />

@@ -53,6 +53,10 @@ public class UserProfileController : ControllerBase
     {
         UserProfile foundUser = _dbContext.UserProfiles
         .Include(up => up.Orders)
+        .ThenInclude(s => s.Status)
+        .Include(up => up.Orders)
+        .ThenInclude(mi => mi.MenuItemOrders)
+        .ThenInclude(mi => mi.MenuItem)
         .Select(up => new UserProfile
         {
             Id = up.Id,
@@ -63,7 +67,26 @@ public class UserProfileController : ControllerBase
                 Id = o.Id,
                 UserProfileId = o.UserProfileId,
                 StatusId = o.StatusId,
+                Status = new Status 
+                {
+                    Id = o.Status.Id,
+                    Name = o.Status.Name
+                },
                 OrderDate = o.OrderDate,
+                MenuItemOrders = o.MenuItemOrders.Select(mi => new MenuItemOrder
+                {
+                    OrderId = mi.OrderId,
+                    MenuItemId = mi.MenuItemId,
+                    MenuItem = new MenuItem
+                    {
+                        Id = mi.MenuItem.Id,
+                        Name = mi.MenuItem.Name,
+                        Description = mi.MenuItem.Description,
+                        ImageLocation = mi.MenuItem.ImageLocation,
+                        Price = mi.MenuItem.Price
+                    },
+                    Quantity = mi.Quantity
+                }).ToList()
             }).Where(o => o.OrderDate == null).ToList()
         })
         .SingleOrDefault(up => up.Id == id);
