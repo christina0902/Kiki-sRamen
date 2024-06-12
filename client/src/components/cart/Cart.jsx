@@ -46,7 +46,9 @@ export const Cart = ({ loggedInUser }) => {
 
   return (
     <>
-      {order?.menuItemOrders?.length != 0 && loggedInUser ? (
+      {Object.keys(order).length != 0 &&
+      order?.menuItemOrders?.length != 0 &&
+      loggedInUser ? (
         <div className="cart-container" style={{ maxWidth: "750px" }}>
           <div className="cart-flex-container">
             <div className="cart-content">

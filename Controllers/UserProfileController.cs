@@ -3,6 +3,7 @@ using Kikis.Models;
 using Kikis.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Tabloid.Controllers;
 
@@ -18,37 +19,8 @@ public class UserProfileController : ControllerBase
         _dbContext = context;
     }
 
-    [HttpGet]
-    // [Authorize]
-    public IActionResult Get()
-    {
-        return Ok(_dbContext.UserProfiles.Include(up => up.Orders).ToList());
-    }
-
-    [HttpGet("withroles")]
-    // [Authorize(Roles = "Admin")]
-    public IActionResult GetWithRoles()
-    {
-        return Ok(_dbContext.UserProfiles
-        .Include(up => up.IdentityUser)
-        .Select(up => new UserProfile
-        {
-            Id = up.Id,
-            FirstName = up.FirstName,
-            LastName = up.LastName,
-            PhoneNumber = up.PhoneNumber,
-            Email = up.IdentityUser.Email,
-            UserName = up.IdentityUser.UserName,
-            IdentityUserId = up.IdentityUserId,
-            Roles = _dbContext.UserRoles
-            .Where(ur => ur.UserId == up.IdentityUserId)
-            .Select(ur => _dbContext.Roles.SingleOrDefault(r => r.Id == ur.RoleId).Name)
-            .ToList(),
-
-        }));
-    }
-
     [HttpGet("{id}")]
+    [Authorize]
     public IActionResult GetById(int id)
     {
         UserProfile foundUser = _dbContext.UserProfiles
@@ -57,11 +29,15 @@ public class UserProfileController : ControllerBase
         .Include(up => up.Orders)
         .ThenInclude(mi => mi.MenuItemOrders)
         .ThenInclude(mi => mi.MenuItem)
+        .Include(id => id.IdentityUser)
         .Select(up => new UserProfile
         {
             Id = up.Id,
             FirstName = up.FirstName,
             LastName = up.LastName,
+            PhoneNumber = up.PhoneNumber,
+            Email = up.Email,
+            IdentityUserId = up.IdentityUserId,
             Orders = up.Orders.Select(o => new Order
             {
                 Id = o.Id,
@@ -90,6 +66,7 @@ public class UserProfileController : ControllerBase
             }).Where(o => o.OrderDate == null).ToList()
         })
         .SingleOrDefault(up => up.Id == id);
+        
         if(foundUser == null)
         {
             return NotFound();
