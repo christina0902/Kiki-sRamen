@@ -15,6 +15,7 @@
   flex-direction: column;
   align-items: center;
   overflow: hidden;
+  object-fit: contain;
 }
 
 .menu-item-img-container {
@@ -60,6 +61,12 @@
   margin: 20px 0;
 }
 
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 870px;
+}
 @media (max-width: 1200px) {
   .menu-list {
     grid-template-columns: repeat(

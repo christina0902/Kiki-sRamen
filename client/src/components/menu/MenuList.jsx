@@ -23,17 +23,19 @@ export const MenuList = () => {
 
   return (
     <>
-      <div className="menu-list">
-        {currentItems.map((menuItem) => {
-          return <MenuItem key={menuItem.id} menuItem={menuItem} />;
-        })}
-      </div>
-      <div className="pagination">
-        <CustomPagination
-          itemsPerPage={menuItemsPerPage}
-          handlePagination={handlePagination}
-          length={menu.length}
-        />
+      <div className="menu-container">
+        <div className="menu-list">
+          {currentItems.map((menuItem) => {
+            return <MenuItem key={menuItem.id} menuItem={menuItem} />;
+          })}
+        </div>
+        <div className="pagination">
+          <CustomPagination
+            itemsPerPage={menuItemsPerPage}
+            handlePagination={handlePagination}
+            length={menu.length}
+          />
+        </div>
       </div>
     </>
   );
