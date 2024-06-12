@@ -40,8 +40,7 @@ export default function NavBar({ loggedInUser, setLoggedInUser }) {
                 </NavLink>
               </NavItem>
               <NavItem>
-                <Button
-                  color="primary"
+                <NavLink
                   onClick={(e) => {
                     e.preventDefault();
                     setOpen(false);
@@ -51,9 +50,10 @@ export default function NavBar({ loggedInUser, setLoggedInUser }) {
                       setOpen(false);
                     });
                   }}
+                  to="/"
                 >
                   Logout
-                </Button>
+                </NavLink>
               </NavItem>
             </Nav>
           </>

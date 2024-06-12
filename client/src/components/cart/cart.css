@@ -1,11 +1,14 @@
 .menu-item-cart-img {
   width: 100%;
+  object-fit: contain;
 }
 
 .menu-item-cart-img-container {
   width: 15%;
+  height: 70px;
   border: white solid 1px;
   padding: 5px;
+  overflow: hidden;
 }
 
 .menu-item-container {
@@ -34,10 +37,10 @@
   margin-bottom: 15px;
   margin-top: 15px;
 }
-
 .cart-btns {
   display: flex;
   flex-direction: column;
+  margin-top: auto;
 }
 
 .cart-subtotal {
@@ -61,7 +64,7 @@
   border: white solid 1px;
   padding-left: 125px;
   padding-right: 125px;
-  padding-top: 50px;
+  padding-top: 20px;
   padding-bottom: 20px;
   margin: auto;
   height: 700px;
@@ -88,9 +91,39 @@
 }
 
 .empty-cart-container {
-  margin-top: 40%;
+  margin-top: 50%;
 }
 
 .empty-cart-heading {
   margin-bottom: 30px;
+}
+
+.cart-pagination {
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.cart-pagination i {
+  visibility: hidden; /* Hide arrows by default */
+}
+
+.cart-pagination i.visible {
+  visibility: visible; /* Make arrows visible when they should be displayed */
+}
+
+.fas {
+  font-size: 24px;
+}
+
+.cart-flex-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.cart-controls {
+  display: flex;
+  flex-direction: column;
 }
