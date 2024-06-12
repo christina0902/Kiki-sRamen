@@ -53,5 +53,15 @@ public class MenuItemOrderController : ControllerBase
         _dbContext.SaveChanges();
         return NoContent();
     }
+
+    [HttpPut]
+    // [Authorize]
+    public IActionResult UpdateMenuItemQuantity(MenuItemOrder menuItemToUpdate)
+    {
+        MenuItemOrder foundMenuItem = _dbContext.MenuItemOrders.SingleOrDefault(mi => mi == menuItemToUpdate);
+        foundMenuItem.Quantity = menuItemToUpdate.Quantity;
+        _dbContext.SaveChanges();
+        return Ok(foundMenuItem);
+    }
   
 }
