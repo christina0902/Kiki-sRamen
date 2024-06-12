@@ -1,6 +1,11 @@
-import { deleteMenuItemOrder } from "../../managers/menuItemOrderManager";
+import { useState } from "react";
+import {
+  deleteMenuItemOrder,
+  updateMenuItemOrder,
+} from "../../managers/menuItemOrderManager";
 
 export const MenuItem = ({ m, refresh }) => {
+  const [newQuantity, setNewQuantity] = useState(m.quantity);
   const quantityDropDownOption = [];
   for (let i = 1; i <= 20; i++) {
     quantityDropDownOption.push(
@@ -15,6 +20,17 @@ export const MenuItem = ({ m, refresh }) => {
       menuItemId: m.menuItemId,
     };
     deleteMenuItemOrder(itemToRemove).then(() => {
+      refresh();
+    });
+  };
+
+  const handleQuantityChange = (e) => {
+    const itemToUpdate = {
+      orderId: m.orderId,
+      menuItemId: m.menuItemId,
+      quantity: parseInt(e.target.value),
+    };
+    updateMenuItemOrder(itemToUpdate).then(() => {
       refresh();
     });
   };
@@ -36,6 +52,9 @@ export const MenuItem = ({ m, refresh }) => {
             <select
               className="quantity-dropdown"
               id="quantity"
+              onChange={(e) => {
+                handleQuantityChange(e);
+              }}
               defaultValue={m.quantity}
               name="quantity"
             >
