@@ -9,3 +9,13 @@ export const startNewOrder = (order) => {
     body: JSON.stringify(order),
   }).then((res) => res.json());
 };
+
+export const placeOrder = (order) => {
+  return fetch(_apiUrl, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(order),
+  }).then((res) => res.json());
+};

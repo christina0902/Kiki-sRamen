@@ -6,6 +6,7 @@ import { HomePage } from "./homePage/HomePage";
 import { MenuList } from "./menu/MenuList";
 import { MenuItemDetails } from "./menu/MenuItemDetails";
 import { Cart } from "./cart/Cart";
+import { Checkout } from "./checkout/Checkout";
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
   return (
@@ -34,8 +35,16 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
         <Route index element={<Cart loggedInUser={loggedInUser} />} />
       </Route>
       <Route path="/checkout">
-        <Route index element={<>checkout page</>} />
+        <Route
+          index
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser}>
+              <Checkout loggedInUser={loggedInUser} />
+            </AuthorizedRoute>
+          }
+        />
       </Route>
+      <Route path="/thankyou" element={<>thank you!</>} />
 
       <Route path="*" element={<p>Whoops, nothing here...</p>} />
     </Routes>

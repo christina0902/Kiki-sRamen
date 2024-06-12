@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Kikis.Data;
 using Kikis.Models;
+using Microsoft.AspNetCore.Authorization;
 namespace Kikis.Controllers;
 
 [ApiController]
@@ -17,7 +18,7 @@ public class OrderController : ControllerBase
     }
 
     [HttpPost]
-
+    [Authorize]
     public IActionResult NewOrder(Order orderToCreate)
     {
         Order foundOrder = _dbContext.Orders.SingleOrDefault(o => o == orderToCreate);
@@ -30,5 +31,19 @@ public class OrderController : ControllerBase
         }
         return BadRequest();
     }
+
+    [HttpPut]
+    [Authorize]
+    public IActionResult PlaceOrder(Order orderToPlace)
+    {
+        Order foundOrder = _dbContext.Orders.SingleOrDefault(o => o == orderToPlace);
+
+        foundOrder.StatusId = 2;
+        foundOrder.OrderDate = DateTime.Now;
+        _dbContext.SaveChanges();
+
+        return Ok(foundOrder);
+    }
+
   
 }
