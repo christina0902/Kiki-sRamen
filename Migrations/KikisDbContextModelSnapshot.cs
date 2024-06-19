@@ -22,6 +22,40 @@ namespace KiKisRamen.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("Kikis.Models.Category", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Appetizers"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Ramen"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Desserts"
+                        });
+                });
+
             modelBuilder.Entity("Kikis.Models.MenuItem", b =>
                 {
                     b.Property<int>("Id")
@@ -29,6 +63,9 @@ namespace KiKisRamen.Migrations
                         .HasColumnType("integer");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("integer");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -48,12 +85,15 @@ namespace KiKisRamen.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CategoryId");
+
                     b.ToTable("MenuItems");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
+                            CategoryId = 2,
                             Description = "Roasted pork belly, fish cake, ramen egg, black fungus, bamboo, green onion, seaweed, black garlic oil, in creamy pork bone broth",
                             ImageLocation = "/Uploads/Ramen.png",
                             Name = "Tonkotsu Ramen",
@@ -62,6 +102,7 @@ namespace KiKisRamen.Migrations
                         new
                         {
                             Id = 2,
+                            CategoryId = 2,
                             Description = "Sous vide (slow-cooked) chicken chashu, ramen egg, corn, sesame seeds, green onion,  seaweed, in creamy chicken soup base",
                             ImageLocation = "/Uploads/Ramen copy.png",
                             Name = "Tori Ramen",
@@ -70,6 +111,7 @@ namespace KiKisRamen.Migrations
                         new
                         {
                             Id = 3,
+                            CategoryId = 2,
                             Description = "Roasted pork belly, fish cake, ramen egg, bamboo shoots, corn, green onion, seaweed, black garlic oil, in soy sauce soup base",
                             ImageLocation = "/Uploads/ramen (5).png",
                             Name = "Shoyu Ramen",
@@ -78,6 +120,7 @@ namespace KiKisRamen.Migrations
                         new
                         {
                             Id = 4,
+                            CategoryId = 1,
                             Description = "Japanese style deep fried shrimp",
                             ImageLocation = "/Uploads/Tempura.png",
                             Name = "Tempura Shrimp",
@@ -86,6 +129,7 @@ namespace KiKisRamen.Migrations
                         new
                         {
                             Id = 5,
+                            CategoryId = 1,
                             Description = "Minced octopus batter fried, top with bonito, served with Japanese mayo & Takoyaki sauce",
                             ImageLocation = "/Uploads/Takoyaki.png",
                             Name = "Takoyaki",
@@ -94,6 +138,7 @@ namespace KiKisRamen.Migrations
                         new
                         {
                             Id = 6,
+                            CategoryId = 1,
                             Description = "Pan fried chicken pot stickers",
                             ImageLocation = "/Uploads/Gyoza.png",
                             Name = "Gyoza",
@@ -102,6 +147,7 @@ namespace KiKisRamen.Migrations
                         new
                         {
                             Id = 7,
+                            CategoryId = 2,
                             Description = "Shrimp, muscle, squid, crabmeat, fish cake, green onion, corn, seaweed, black garlic oil, in pork bone broth",
                             ImageLocation = "/Uploads/Template5.png",
                             Name = "Seafood Ramen",
@@ -110,6 +156,7 @@ namespace KiKisRamen.Migrations
                         new
                         {
                             Id = 8,
+                            CategoryId = 2,
                             Description = "Roasted pork belly, ramen egg, corn, bean sprout, green onion, seaweed, in creamy miso soup base",
                             ImageLocation = "/Uploads/Template7.png",
                             Name = "Spicy Miso Ramen",
@@ -118,6 +165,7 @@ namespace KiKisRamen.Migrations
                         new
                         {
                             Id = 9,
+                            CategoryId = 2,
                             Description = "Bamboo shoots, black fungus, bean sprouts, corn, green onion, seaweed, black garlic oil, in creamy vegetable soup base",
                             ImageLocation = "/Uploads/Template1.png",
                             Name = "Vegetable Ramen",
@@ -126,6 +174,7 @@ namespace KiKisRamen.Migrations
                         new
                         {
                             Id = 10,
+                            CategoryId = 2,
                             Description = "Fish cake, ramen egg, corn, seaweed, top w. melting American cheese, black garlic oil, in creamy pork bone broth",
                             ImageLocation = "/Uploads/Template8.png",
                             Name = "Cheese Ramen",
@@ -134,6 +183,7 @@ namespace KiKisRamen.Migrations
                         new
                         {
                             Id = 11,
+                            CategoryId = 2,
                             Description = "Ramen noodle with spicy miso topped with char siu, egg, green onion, and sesame seeds.",
                             ImageLocation = "/Uploads/Template4.png",
                             Name = "Spicy Miso Ramen",
@@ -202,7 +252,7 @@ namespace KiKisRamen.Migrations
                         new
                         {
                             Id = 1,
-                            OrderDate = new DateTime(2024, 6, 9, 4, 15, 44, 989, DateTimeKind.Local).AddTicks(7740),
+                            OrderDate = new DateTime(2024, 6, 19, 13, 40, 6, 862, DateTimeKind.Local).AddTicks(3770),
                             StatusId = 2,
                             UserProfileId = 1
                         });
@@ -417,13 +467,13 @@ namespace KiKisRamen.Migrations
                         {
                             Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ff114346-0eb9-48a0-b724-a0a3eeebf2ff",
+                            ConcurrencyStamp = "5e29c82c-7074-4075-991e-52c728dffb93",
                             Email = "christinam1215@yahoo.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAELWeZC3TqG8kTAe61aLl3xslS9dwN01GHGOPgsQ93RvXCcgfDhvw6qig4J96xrm75w==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEE2qBOYgrn5CNPM6vRqJwPDZde16CQbhAxXpiaXqHveZ9VCNwNTlKZj3Dlka+g5UHQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "5aa9c26c-33db-43e6-bf51-3f7809687cd6",
+                            SecurityStamp = "427cec63-3633-4e1f-9f29-28b96d0f4474",
                             TwoFactorEnabled = false,
                             UserName = "christinam1215"
                         });
@@ -515,6 +565,17 @@ namespace KiKisRamen.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("Kikis.Models.MenuItem", b =>
+                {
+                    b.HasOne("Kikis.Models.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
                 });
 
             modelBuilder.Entity("Kikis.Models.MenuItemOrder", b =>
