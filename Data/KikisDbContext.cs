@@ -14,6 +14,7 @@ public class KikisDbContext : IdentityDbContext<IdentityUser>
     public DbSet<Order> Orders { get; set; }
     public DbSet<MenuItemOrder> MenuItemOrders { get; set; }
     public DbSet<MenuItem> MenuItems { get; set; }
+    public DbSet<Category> Categories { get; set; }
 
     public KikisDbContext(DbContextOptions<KikisDbContext> context, IConfiguration config) : base(context)
     {
@@ -120,6 +121,7 @@ public class KikisDbContext : IdentityDbContext<IdentityUser>
                 Price = 15.5M,
                 ImageLocation = "/Uploads/Ramen.png",
                 Description = "Roasted pork belly, fish cake, ramen egg, black fungus, bamboo, green onion, seaweed, black garlic oil, in creamy pork bone broth",
+                CategoryId = 2
             },
             new MenuItem
             {
@@ -127,7 +129,8 @@ public class KikisDbContext : IdentityDbContext<IdentityUser>
                 Name = "Tori Ramen",
                 Price = 15M,
                 ImageLocation = "/Uploads/Ramen copy.png",
-                Description = "Sous vide (slow-cooked) chicken chashu, ramen egg, corn, sesame seeds, green onion,  seaweed, in creamy chicken soup base"
+                Description = "Sous vide (slow-cooked) chicken chashu, ramen egg, corn, sesame seeds, green onion,  seaweed, in creamy chicken soup base",
+                CategoryId = 2
             },
             new MenuItem
             {
@@ -135,7 +138,8 @@ public class KikisDbContext : IdentityDbContext<IdentityUser>
                 Name = "Shoyu Ramen",
                 Price = 15M,
                 ImageLocation = "/Uploads/ramen (5).png",
-                Description = "Roasted pork belly, fish cake, ramen egg, bamboo shoots, corn, green onion, seaweed, black garlic oil, in soy sauce soup base"
+                Description = "Roasted pork belly, fish cake, ramen egg, bamboo shoots, corn, green onion, seaweed, black garlic oil, in soy sauce soup base",
+                CategoryId = 2
             },
             new MenuItem
             {
@@ -143,7 +147,8 @@ public class KikisDbContext : IdentityDbContext<IdentityUser>
                 Name = "Tempura Shrimp",
                 Price = 8M,
                 ImageLocation = "/Uploads/Tempura.png",
-                Description = "Japanese style deep fried shrimp"
+                Description = "Japanese style deep fried shrimp",
+                CategoryId = 1
             },
             new MenuItem
             {
@@ -151,7 +156,8 @@ public class KikisDbContext : IdentityDbContext<IdentityUser>
                 Name = "Takoyaki",
                 Price = 8M,
                 ImageLocation = "/Uploads/Takoyaki.png",
-                Description = "Minced octopus batter fried, top with bonito, served with Japanese mayo & Takoyaki sauce"
+                Description = "Minced octopus batter fried, top with bonito, served with Japanese mayo & Takoyaki sauce",
+                CategoryId = 1
             },
             new MenuItem
             {
@@ -159,7 +165,8 @@ public class KikisDbContext : IdentityDbContext<IdentityUser>
                 Name = "Gyoza",
                 Price = 7M,
                 ImageLocation = "/Uploads/Gyoza.png",
-                Description = "Pan fried chicken pot stickers"
+                Description = "Pan fried chicken pot stickers",
+                CategoryId = 1
             },
             new MenuItem
             {
@@ -167,7 +174,8 @@ public class KikisDbContext : IdentityDbContext<IdentityUser>
                 Name = "Seafood Ramen",
                 Price = 16M,
                 ImageLocation = "/Uploads/Template5.png",
-                Description = "Shrimp, muscle, squid, crabmeat, fish cake, green onion, corn, seaweed, black garlic oil, in pork bone broth"
+                Description = "Shrimp, muscle, squid, crabmeat, fish cake, green onion, corn, seaweed, black garlic oil, in pork bone broth",
+                CategoryId = 2
             },
             new MenuItem
             {
@@ -175,7 +183,8 @@ public class KikisDbContext : IdentityDbContext<IdentityUser>
                 Name = "Spicy Miso Ramen",
                 Price = 15M,
                 ImageLocation = "/Uploads/Template7.png",
-                Description = "Roasted pork belly, ramen egg, corn, bean sprout, green onion, seaweed, in creamy miso soup base"
+                Description = "Roasted pork belly, ramen egg, corn, bean sprout, green onion, seaweed, in creamy miso soup base",
+                CategoryId = 2
             },
             new MenuItem
             {
@@ -183,7 +192,8 @@ public class KikisDbContext : IdentityDbContext<IdentityUser>
                 Name = "Vegetable Ramen",
                 Price = 13M,
                 ImageLocation = "/Uploads/Template1.png",
-                Description = "Bamboo shoots, black fungus, bean sprouts, corn, green onion, seaweed, black garlic oil, in creamy vegetable soup base"
+                Description = "Bamboo shoots, black fungus, bean sprouts, corn, green onion, seaweed, black garlic oil, in creamy vegetable soup base",
+                CategoryId = 2
             },
             new MenuItem
             {
@@ -191,7 +201,8 @@ public class KikisDbContext : IdentityDbContext<IdentityUser>
                 Name = "Cheese Ramen",
                 Price = 16M,
                 ImageLocation = "/Uploads/Template8.png",
-                Description = "Fish cake, ramen egg, corn, seaweed, top w. melting American cheese, black garlic oil, in creamy pork bone broth"
+                Description = "Fish cake, ramen egg, corn, seaweed, top w. melting American cheese, black garlic oil, in creamy pork bone broth",
+                CategoryId = 2
             },
             new MenuItem
             {
@@ -199,7 +210,27 @@ public class KikisDbContext : IdentityDbContext<IdentityUser>
                 Name = "Spicy Miso Ramen",
                 Price = 16.95M,
                 ImageLocation = "/Uploads/Template4.png",
-                Description = "Ramen noodle with spicy miso topped with char siu, egg, green onion, and sesame seeds."
+                Description = "Ramen noodle with spicy miso topped with char siu, egg, green onion, and sesame seeds.",
+                CategoryId = 2
+            }
+        });
+
+         modelBuilder.Entity<Category>().HasData(new Category[]
+        {
+            new Category
+            {
+                Id = 1,
+                Name = "Appetizers"
+            },
+            new Category
+            {
+                Id = 2,
+                Name = "Ramen"
+            },
+            new Category
+            {
+                Id = 3,
+                Name = "Desserts"
             }
         });
 

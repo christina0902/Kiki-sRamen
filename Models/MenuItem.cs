@@ -17,4 +17,6 @@ public class MenuItem
  [Required]
  public string Description { get; set; }
  public List<MenuItemOrder> MenuItemOrders { get; set; }
+ public int CategoryId { get; set; }
+ public Category? Category { get; set; }
 }

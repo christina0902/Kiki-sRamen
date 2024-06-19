@@ -16,5 +16,7 @@ public class MenuItemDTO
  
  [Required]
  public string Description { get; set; }
+  public CategoryDTO Category { get; set; }
+
  
 }

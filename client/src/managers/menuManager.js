@@ -1,7 +1,11 @@
 const _apiUrl = "/api/menu";
 
-export const getMenu = async () => {
-  return await fetch(_apiUrl).then((res) => res.json());
+export const getMenu = async (categoryId) => {
+  let url = _apiUrl;
+  if (categoryId) {
+    url += `?categoryId=${categoryId}`;
+  }
+  return await fetch(url).then((res) => res.json());
 };
 
 export const getMenuById = (id) => {

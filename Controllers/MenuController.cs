@@ -18,9 +18,15 @@ public class MenuController : ControllerBase
 
     [HttpGet]
     
-    public IActionResult GetMenu()
+    public IActionResult GetMenu(int? categoryId)
     {
-        return Ok(_dbContext.MenuItems.OrderBy(mu => mu.Name));
+        List<MenuItem> menuItems =  _dbContext.MenuItems.OrderBy(mu => mu.Name).ToList();
+
+        if(categoryId != null)
+        {
+            menuItems = menuItems.Where(mi => mi.CategoryId == categoryId).ToList();
+        }
+        return Ok(menuItems);
     }
 
     [HttpGet("{id}")]
