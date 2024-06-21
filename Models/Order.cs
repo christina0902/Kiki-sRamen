@@ -13,7 +13,7 @@ public class Order
     public List<MenuItemOrder>? MenuItemOrders { get; set; }
 
     [NotMapped]
-   public decimal Total 
+   public decimal Total
 {
     get
     {

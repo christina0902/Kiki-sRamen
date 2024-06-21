@@ -1,23 +1,7 @@
-import { useState } from "react";
 import { NavLink as RRNavLink } from "react-router-dom";
-import {
-  Button,
-  Collapse,
-  Nav,
-  NavLink,
-  NavItem,
-  Navbar,
-  NavbarBrand,
-  NavbarToggler,
-} from "reactstrap";
-import { logout } from "../managers/authManager";
-import { useNavigate } from "react-router-dom";
+import { Nav, NavLink, NavItem, Navbar, NavbarBrand } from "reactstrap";
 
-export default function NavBar({ loggedInUser, setLoggedInUser }) {
-  const [open, setOpen] = useState(false);
-  const navigate = useNavigate();
-  const toggleNavbar = () => setOpen(!open);
-
+export default function NavBar({ loggedInUser }) {
   return (
     <div>
       <Navbar className="navBar" container="fluid" dark={true} expand="xl">
@@ -40,19 +24,8 @@ export default function NavBar({ loggedInUser, setLoggedInUser }) {
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setOpen(false);
-                    logout().then(() => {
-                      navigate("/");
-                      setLoggedInUser(null);
-                      setOpen(false);
-                    });
-                  }}
-                  to="/"
-                >
-                  Logout
+                <NavLink tag={RRNavLink} to="/account">
+                  Account
                 </NavLink>
               </NavItem>
             </Nav>

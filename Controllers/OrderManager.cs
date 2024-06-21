@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Kikis.Data;
 using Kikis.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.EntityFrameworkCore;
+
 namespace Kikis.Controllers;
 
 [ApiController]
@@ -22,7 +24,7 @@ public class OrderController : ControllerBase
     public IActionResult NewOrder(Order orderToCreate)
     {
         Order foundOrder = _dbContext.Orders.SingleOrDefault(o => o == orderToCreate);
-        if(foundOrder == null)
+        if (foundOrder == null)
         {
             orderToCreate.StatusId = 1;
             _dbContext.Add(orderToCreate);
@@ -44,6 +46,38 @@ public class OrderController : ControllerBase
 
         return Ok(foundOrder);
     }
+[HttpGet("{id}")]
+[Authorize]
+public IActionResult GetById(int id) 
+{
+    Order foundOrder = _dbContext.Orders
+        .Include(o => o.MenuItemOrders)
+        .ThenInclude(mio => mio.MenuItem)
+        .SingleOrDefault(o => o.Id == id);
 
-  
+        if (foundOrder == null)
+        {
+            return NotFound(); 
+        }
+
+      return Ok(foundOrder);
+}
+
+    [HttpDelete("{id}")]
+    // [Authorize]
+
+    public IActionResult RemoveOrder(int id)
+    {
+        Order foundOrder = _dbContext.Orders.SingleOrDefault(o =>  o.Id == id);
+
+        if (foundOrder == null)
+        {
+            return NotFound(); 
+        }
+
+        _dbContext.Orders.Remove(foundOrder);
+        _dbContext.SaveChanges();
+        return NoContent();
+    }
+
 }
