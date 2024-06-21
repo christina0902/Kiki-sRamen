@@ -3,7 +3,6 @@ import { getUserProfile } from "../../managers/userProfileManager";
 import "./cart.css";
 import { MenuItem } from "./MenuItem";
 import { useNavigate } from "react-router-dom";
-import { CustomPagination } from "../Pagination";
 import { CartPagination } from "./CartPagination";
 
 export const Cart = ({ loggedInUser }) => {

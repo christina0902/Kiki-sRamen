@@ -1,0 +1,147 @@
+.account-container {
+  border: white solid 1px;
+  padding-left: 125px;
+  padding-right: 125px;
+  padding-top: 80px;
+  padding-bottom: 20px;
+  margin: auto;
+  height: 750px;
+  margin-top: 3%;
+}
+
+.account-header {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  margin: auto;
+}
+
+.account-btn {
+  font-size: 25px;
+}
+
+.edit-btn {
+  font-size: 25px;
+  display: flex;
+  width: 100%;
+  margin: auto;
+  color: white;
+  text-align: right;
+  margin-top: 50px;
+  margin-bottom: 30px;
+  cursor: pointer;
+}
+
+.edit-btn-container {
+  width: 90%;
+  margin: auto;
+  height: 100px;
+}
+
+.sign-out-btn {
+  color: white;
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+  margin: auto;
+  text-decoration: underline;
+}
+
+.account-form-container {
+  height: 600px;
+}
+
+.account-btn-controls {
+  background-color: #1a1a1a;
+
+  border-radius: 0%;
+  width: 35%;
+  height: 40px;
+  border: white solid 1px;
+  margin-bottom: 20px;
+  color: white;
+  font-size: 20px;
+}
+
+.controls-container {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin: auto;
+}
+
+.btn-active {
+  text-decoration: underline;
+}
+
+.past-order-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 75%;
+  height: 100px;
+  padding: 10px;
+}
+
+.past-order-list {
+  height: 100%;
+  width: 100%;
+  display: flex;
+
+  overflow: auto;
+}
+
+.past-order-list-item {
+  font-size: 15px;
+  text-align: left;
+
+  padding-bottom: 5px;
+  width: 50%;
+}
+
+.past-orders-btn {
+  background-color: white;
+  border: none;
+  padding: 10px;
+  color: black;
+  width: 120px;
+}
+
+.past-orders {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  margin: auto;
+  border: white solid 1px;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 10px;
+  margin-bottom: 20px;
+  padding-right: 10px;
+}
+
+.ul {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.container-account {
+  margin-top: 15px;
+}
+
+.past-orders-btn {
+  color: white;
+  background-color: transparent;
+  border: white solid 1px;
+}
+
+.no-orders-container {
+  margin-top: 180px;
+}
+
+.account-pagination {
+  width: 90%;
+  margin: auto;
+}
