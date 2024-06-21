@@ -15,6 +15,8 @@ This website aims to solve these issues with a dual-pronged approach:
 - CSS3
 - Vite
 - Reactstrap
+- C#
+- .Net 8.0
 
 ## Installation and Setup Instructions
 
